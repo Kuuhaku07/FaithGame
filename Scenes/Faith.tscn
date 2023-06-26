@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://drfoljvyet65p"]
+
+[ext_resource type="Script" path="res://Scenes/Faith.gd" id="1_nbrkh"]
+[ext_resource type="Texture2D" uid="uid://dt73yewahr00h" path="res://icon.svg" id="1_uh8wy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4at2"]
+
+[node name="Faith" type="CharacterBody2D"]
+script = ExtResource("1_nbrkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.173828, 0.248047)
+texture = ExtResource("1_uh8wy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q4at2")

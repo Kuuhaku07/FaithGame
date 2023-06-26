@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://btaibhg6r2tvt"]
+
+[ext_resource type="PackedScene" uid="uid://drfoljvyet65p" path="res://Scenes/Faith.tscn" id="1_odsfv"]
+
+[node name="Mundo" type="Node2D"]
+position = Vector2(156, 104)
+
+[node name="Faith" parent="." instance=ExtResource("1_odsfv")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-73, 37, 84, 36, 131, 2, 198, 55, 102, 91, -108, 71, -73, 59, -123, 20, -121, -82, -94, -85, -93, 13)
