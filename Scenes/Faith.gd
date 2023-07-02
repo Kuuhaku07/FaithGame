@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var Max_Speed = 400
 @export var Aceleracion = Vector2(1500, 4000)
-@export var Friccion = 1000
+@export var Friccion = 10
 @onready var axis = Vector2.ZERO
 
 @export var Is_Grounded = true
@@ -37,9 +37,9 @@ func get_input_axis():
 func move(delta):
 	
 	axis=get_input_axis()
-	print(axis)
+
 	if axis== Vector2.ZERO:
-		apply_friction(Friccion * delta)
+		apply_friction(Friccion,delta,Is_Grounded)
 	
 
 	apply_gravity(gravity*delta)
@@ -47,12 +47,13 @@ func move(delta):
 	jump(Is_Grounded,delta,Jump_Max)
 	move_and_slide()
 		
-func apply_friction(amount):
-	if velocity.length()>amount:
-		velocity -=velocity.normalized() * amount
+func apply_friction(amount,delta,Is_Grounded):
+	if abs(velocity.x)>amount:
+		velocity.x -=velocity.x * amount*delta
+		print(velocity.x)
 	else: 
-		velocity= Vector2.ZERO
-
+		velocity.x= 0
+		
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(Max_Speed)
@@ -66,7 +67,6 @@ func jump(grounded,delta,Jump_max):
 
 		if velocity.y<Jump_max and Input.is_action_just_pressed("Saltar") :
 			velocity.y = Jump_max*-1*delta
-			print (velocity.y)
 
 			
 	
