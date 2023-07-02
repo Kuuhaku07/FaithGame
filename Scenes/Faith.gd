@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@export var Max_Speed = 400
-@export var Aceleracion = Vector2(1500, 4000)
-@export var Friccion = 10
+@export var Max_Speed = 300
+@export var Aceleracion = 1500
+@export var Friccion = 15
 @onready var axis = Vector2.ZERO
 
 @export var Is_Grounded = true
 @export var Is_Crouched = false
 
-@export var Jump_Max=30000
+@export var Jump_Max=25000
 
 @export var max_gravity = 1500
 @export var gravity = 1500
@@ -43,7 +43,7 @@ func move(delta):
 	
 
 	apply_gravity(gravity*delta)
-	apply_movement(axis * Aceleracion* delta)
+	apply_movement(axis.x * Aceleracion* delta)
 	jump(Is_Grounded,delta,Jump_Max)
 	move_and_slide()
 		
@@ -55,8 +55,9 @@ func apply_friction(amount,delta,Is_Grounded):
 		velocity.x= 0
 		
 func apply_movement(accel):
-	velocity += accel
-	velocity = velocity.limit_length(Max_Speed)
+	if abs(velocity.x)<Max_Speed:
+		velocity.x += accel
+
 	
 func apply_gravity(accel):
 	if velocity.y<max_gravity:
