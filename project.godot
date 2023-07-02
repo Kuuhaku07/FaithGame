@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Faith Game"
-run/main_scene="res://Scenes/mundo.tscn"
+run/main_scene="res://Scenes/Level/Pruebas de fisicas.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/scale=3.0
 
 [input]
 
