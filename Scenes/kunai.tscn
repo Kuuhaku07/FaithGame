@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbjweyoj51w8e"]
+
+[ext_resource type="Script" path="res://Scenes/kunai.gd" id="1_701jp"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_701jp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
